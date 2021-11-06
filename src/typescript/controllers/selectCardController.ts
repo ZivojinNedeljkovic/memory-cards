@@ -1,13 +1,61 @@
-import { FLIP_CARD_ANIMATION_DURATION } from '../models/gameConfig'
+import {
+  CARDS_PER_ATTEMPT,
+  FLIP_CARD_ANIMATION_DURATION,
+} from '../models/gameConfig'
+import { elementsAreTheSame as allAreTheSame } from '../models/gameLogic'
 import { gameState } from '../models/gameState'
+import { wait } from '../models/helpers'
 import { CardView } from '../views/cardView'
-import { submitController } from './submitController'
+import tableView from '../views/tableView'
+
+function getCurrentAttempt() {
+  return gameState.currentMoveCards.map(cardView => cardView.cardName)
+}
+
+function removeCardsFromGame(cards: CardView[]) {
+  cards.forEach(cardView => cardView.hideCard())
+}
+
+async function flipBackCards(cards: CardView[]) {
+  await wait(FLIP_CARD_ANIMATION_DURATION) // Whit for second card to turn
+
+  gameState.currentMoveCards.forEach(cardView => {
+    cardView.flip(FLIP_CARD_ANIMATION_DURATION)
+    cardView.clickable = true
+  })
+}
+
+async function submitController() {
+  tableView.clickable = false
+
+  const cardsPlayed = getCurrentAttempt()
+
+  if (allAreTheSame(cardsPlayed)) {
+    removeCardsFromGame(gameState.currentMoveCards)
+    gameState.cardsLeftInTheGame -= cardsPlayed.length
+  } else {
+    await flipBackCards(gameState.currentMoveCards)
+  }
+
+  tableView.clickable = true
+
+  gameState.currentMoveCards = []
+  gameState.movesPlayed++
+
+  if (gameState.cardsLeftInTheGame !== 0) return
+
+  gameState.gameOver = true
+
+  await wait(1000)
+  alert('You Win!')
+}
 
 export function selectCardController(card: CardView) {
   card.flip(FLIP_CARD_ANIMATION_DURATION)
   card.clickable = false
 
-  gameState.currentAttemptCards.push(card)
+  gameState.currentMoveCards.push(card)
 
-  if (gameState.currentAttemptCards.length === 2) submitController()
+  if (gameState.currentMoveCards.length === CARDS_PER_ATTEMPT)
+    submitController()
 }

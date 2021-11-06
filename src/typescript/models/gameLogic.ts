@@ -59,9 +59,3 @@ export function elementsAreTheSame<T>(array: T[]) {
 
   return true
 }
-
-export function wait(duration: number) {
-  return new Promise((resolve, _) => {
-    setTimeout(resolve, duration)
-  })
-}

@@ -1,13 +1,17 @@
 import { CARDS } from '../models/gameConfig'
 import { generateCards } from '../models/gameLogic'
+import { setStyleProperties } from '../views/shared/domHelpers'
 import tableView from '../views/tableView'
 import { initStateController } from './initStateController'
 import { selectCardController } from './selectCardController'
 
 export function loadGameController() {
-  initStateController(10)
-  const cards = generateCards(40, CARDS) as string[]
-  tableView.addCards(5, 8, cards)
+  const rows = 5
+  const columns = 8
+
+  initStateController(rows * columns)
+  const cards = generateCards(rows * columns, CARDS) as string[]
+  tableView.addCards(rows, columns, cards)
 
   tableView.clickHandler = selectCardController
 }

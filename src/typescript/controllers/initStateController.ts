@@ -3,8 +3,9 @@ import { generateCards } from '../models/gameLogic'
 import { gameState } from '../models/gameState'
 
 export function initStateController(numOfCards: number) {
-  gameState.attemptsMade = 0
-  gameState.currentAttemptCards = []
+  gameState.movesPlayed = 0
+  gameState.currentMoveCards = []
   gameState.gameOver = false
   gameState.cards = generateCards(numOfCards, CARDS) as string[]
+  gameState.cardsLeftInTheGame = numOfCards
 }

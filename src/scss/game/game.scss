@@ -3,7 +3,7 @@
 
 //   14vw,
 //   8.2vh,
-$card-width: min(calc(60vw / var(--rows)), calc(60vh / var(--columns)));
+$card-width: min(calc(80vw / (var(--rows))), calc(65vh / var(--columns)));
 
 @function multiplyCardWidth($factors...) {
   $factorsProduct: 1;
@@ -20,16 +20,12 @@ $card-height: multiplyCardWidth(1.1);
   background-color: #99d98c;
   height: 100vh;
   overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .game__table {
   --rows: 5;
   --columns: 5;
-  //padding-top: multiplyCardWidth(0.2);
+  padding-top: multiplyCardWidth(0.2);
   display: grid;
   grid-template-columns: repeat(var(--rows), $card-width);
   gap: multiplyCardWidth(0.1) multiplyCardWidth(0.1);
