@@ -8,7 +8,7 @@ type Player = {
 export type GameState = {
   movesPlayed: number
   gameOver: boolean
-  currentMoveCards: CardView[]
+  currentMoveCardViews: CardView[]
   cards: string[]
   cardsLeftInTheGame: number
 }
@@ -16,7 +16,7 @@ export type GameState = {
 export const gameState: GameState = {
   movesPlayed: 0,
   gameOver: false,
-  currentMoveCards: [],
+  currentMoveCardViews: [],
   cards: [],
   cardsLeftInTheGame: 0,
 }

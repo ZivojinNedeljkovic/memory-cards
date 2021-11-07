@@ -26,7 +26,7 @@ function setUpGameConfig() {
 function setUpGameState() {
   const numberOfCards = gameConfig.rows * gameConfig.columns
   gameState.movesPlayed = 0
-  gameState.currentMoveCards = []
+  gameState.currentMoveCardViews = []
   gameState.gameOver = false
   gameState.cards = generateCards(
     numberOfCards,
@@ -34,8 +34,6 @@ function setUpGameState() {
     gameConfig.cardsPerMove
   ) as string[]
   gameState.cardsLeftInTheGame = numberOfCards
-  console.log(gameState)
-  console.log(gameConfig)
 }
 
 export function loadGameController() {

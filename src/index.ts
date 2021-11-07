@@ -1,4 +1,7 @@
+localStorage.clear()
+
 const playBtn = document.querySelector('.play-btn') as HTMLElement
+
 const levels = document.querySelector('.levels') as HTMLElement
 
 const easyLevelBtn = document.querySelector('.levels__easy-btn') as HTMLElement
@@ -15,37 +18,6 @@ const customLevelBtn = document.querySelector(
 
 const customLevelForm = document.querySelector('.custom-level') as HTMLElement
 
-const rowsInput = document.querySelector(
-  '.custom-level__rows-input'
-) as HTMLInputElement
-
-const columnsInput = document.querySelector(
-  '.custom-level__columns-input'
-) as HTMLInputElement
-
-const cardsInTheGameInput = document.querySelector(
-  '.custom-level__cards-in-the-game-input'
-) as HTMLInputElement
-
-const cardsPerMoveInput = document.querySelector(
-  '.custom-level__cards-per-move-input'
-) as HTMLInputElement
-
-localStorage.clear()
-
-const setGamaParameters = (params: {
-  rows: number
-  columns: number
-  cardsInTheGame: number
-  cardsPerMove: number
-}) => {
-  localStorage.setItem('rows', `${params.rows}`)
-  localStorage.setItem('columns', `${params.columns}`)
-  localStorage.setItem('cardsInTheGame', `${params.cardsInTheGame}`)
-  localStorage.setItem('cardsPerMove', `${params.cardsPerMove}`)
-}
-const goToGame = () => location.replace('./src/game/game.html')
-
 playBtn.addEventListener('click', onPlayBtnClick)
 customLevelBtn.addEventListener('click', onCustomLevelBtnClick)
 easyLevelBtn.addEventListener('click', onEasyLevelBtnClick)
@@ -61,6 +33,20 @@ function onPlayBtnClick() {
 function onCustomLevelBtnClick() {
   customLevelForm.classList.toggle('hide')
 }
+
+const setGamaParameters = (params: {
+  rows: number
+  columns: number
+  cardsInTheGame: number
+  cardsPerMove: number
+}) => {
+  localStorage.setItem('rows', `${params.rows}`)
+  localStorage.setItem('columns', `${params.columns}`)
+  localStorage.setItem('cardsInTheGame', `${params.cardsInTheGame}`)
+  localStorage.setItem('cardsPerMove', `${params.cardsPerMove}`)
+}
+
+const goToGame = () => location.replace('./src/game/game.html')
 
 function onEasyLevelBtnClick() {
   setGamaParameters({
@@ -95,16 +81,33 @@ function onHardLevelBtnClick() {
 function onCustomLevelFormSubmit(event: any) {
   event.preventDefault()
 
-  const rows = +rowsInput.value
-  const columns = +columnsInput.value
-  const cardsInTheGame = +cardsInTheGameInput.value
-  const cardsPerMove = +cardsPerMoveInput.value
+  const getInputData = () => {
+    return {
+      rows: +(
+        document.querySelector('.custom-level__rows-input') as HTMLInputElement
+      ).value,
+      columns: +(
+        document.querySelector(
+          '.custom-level__columns-input'
+        ) as HTMLInputElement
+      ).value,
+      cardsInTheGame: +(
+        document.querySelector(
+          '.custom-level__cards-in-the-game-input'
+        ) as HTMLInputElement
+      ).value,
+
+      cardsPerMove: +(
+        document.querySelector(
+          '.custom-level__cards-per-move-input'
+        ) as HTMLInputElement
+      ).value,
+    }
+  }
+
+  const { rows, columns, cardsInTheGame, cardsPerMove } = getInputData()
 
   const numberOfCardsInTheGame = rows * columns
-  console.log(numberOfCardsInTheGame)
-
-  console.log(cardsPerMove)
-  console.log(numberOfCardsInTheGame % cardsPerMove)
 
   if (numberOfCardsInTheGame < cardsPerMove)
     return alert(
