@@ -1,39 +1,3 @@
-// $card-width: min(calc(60vw / var(--rows)), calc(60vh / var(--columns)));
-
-// @function multiplyCardWidth($factors...) {
-//   $factorsProduct: 1;
-//   @each $factor in $factors {
-//     $factorsProduct: $factorsProduct * $factor;
-//   }
-//   @return calc(#{$card-width} * #{$factorsProduct});
-// }
-
-// $card-height: multiplyCardWidth(1.1);
-
-// .game {
-//   position: relative;
-//   background-color: #99d98c;
-//   height: 100vh;
-//   overflow-x: hidden;
-// }
-
-// .game__table {
-//   --rows: 5;
-//   --columns: 5;
-//   padding-top: multiplyCardWidth(0.2);
-//   display: grid;
-//   grid-template-columns: repeat(var(--rows), $card-width);
-//   gap: multiplyCardWidth(0.1) multiplyCardWidth(0.1);
-//   justify-content: center;
-// }
-
-// @import './cards.scss';
-
-// $card-stacking-factor: 2.3;
-//$card-width: min(14vw, 8.2vh);
-
-//   14vw,
-//   8.2vh,
 $card-width: min(calc(80vw / var(--rows)), calc(65vh / var(--columns)));
 
 @function multiplyCardWidth($factors...) {
@@ -45,6 +9,7 @@ $card-width: min(calc(80vw / var(--rows)), calc(65vh / var(--columns)));
 }
 
 $card-height: multiplyCardWidth(1.1);
+$table-gap: multiplyCardWidth(0.1);
 
 .game {
   background-color: #99d98c;
@@ -52,13 +17,36 @@ $card-height: multiplyCardWidth(1.1);
 }
 
 .game__table {
-  --rows: 5;
-  --columns: 5;
   padding-top: multiplyCardWidth(0.2);
   display: grid;
   grid-template-columns: repeat(var(--rows), $card-width);
-  gap: multiplyCardWidth(0.1) multiplyCardWidth(0.1);
+  gap: $table-gap $table-gap;
   justify-content: center;
+}
+
+.game__scoreboard {
+  padding-top: multiplyCardWidth(0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: calc(#{$card-width} * var(--rows) + #{$table-gap} * (var(--rows) - 1));
+  margin: 0 auto;
+
+  h3,
+  h4 {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  h3 {
+    font-size: multiplyCardWidth(0.25);
+    margin: 0;
+  }
+
+  h4 {
+    font-size: multiplyCardWidth(0.2);
+    margin: 0;
+  }
 }
 
 @import './cards.scss';

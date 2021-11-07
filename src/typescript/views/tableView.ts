@@ -11,7 +11,7 @@ class TableView extends ClickableView<(card: CardView) => void> {
   }
 
   addCards(rows: number, columns: number, cards: string[]) {
-    setStyleProperties(this.element, `--rows: ${rows}`, `--columns: ${columns}`)
+    setStyleProperties([`--rows: ${rows}`, `--columns: ${columns}`])
 
     cards.forEach((card, i) => {
       CardView.getNewCardElement(this.element, card)

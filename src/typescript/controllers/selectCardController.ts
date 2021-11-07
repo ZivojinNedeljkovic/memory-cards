@@ -6,6 +6,7 @@ import { elementsAreTheSame as allAreTheSame } from '../models/gameLogic'
 import { gameState } from '../models/gameState'
 import { wait } from '../models/helpers'
 import { CardView } from '../views/cardView'
+import movesPlayedView from '../views/movesPlayedView'
 import tableView from '../views/tableView'
 
 function getCurrentAttempt() {
@@ -25,7 +26,8 @@ async function flipBackCards(cards: CardView[]) {
   })
 }
 
-async function submitController() {
+async function submit() {
+  movesPlayedView.counter++
   tableView.clickable = false
 
   const cardsPlayed = getCurrentAttempt()
@@ -56,6 +58,5 @@ export function selectCardController(card: CardView) {
 
   gameState.currentMoveCards.push(card)
 
-  if (gameState.currentMoveCards.length === CARDS_PER_ATTEMPT)
-    submitController()
+  if (gameState.currentMoveCards.length === CARDS_PER_ATTEMPT) submit()
 }
