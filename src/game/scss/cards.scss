@@ -43,6 +43,12 @@ $flipTransitionDuration: 0.8s;
   color: black;
 }
 
+// @media (min-width: 40rem) {
+//   .game__table__card__front {
+//     cursor: pointer;
+//   }
+// }
+
 %game__table__card__back {
   transform: rotateY(180deg);
 }

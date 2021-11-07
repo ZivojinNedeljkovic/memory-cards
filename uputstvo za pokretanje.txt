@@ -1,0 +1,1 @@
+Unutar terminala unestite komandu 'npm install', a potom 'npm start'.

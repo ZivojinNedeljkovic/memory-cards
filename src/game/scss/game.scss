@@ -24,20 +24,22 @@ $table-gap: multiplyCardWidth(0.1);
   height: 100vh;
 }
 
+$icon-width: min(6vw, 50px);
+
 .game__go-back-icon {
   position: fixed;
   top: 1.2vh;
   left: 1vw;
-  width: 6vw;
-  height: 6vw;
+  width: $icon-width;
+  height: $icon-width;
 }
 
 .game__refresh-icon {
   position: fixed;
   top: 1.2vh;
   right: 1vw;
-  width: 6vw;
-  height: 6vw;
+  width: $icon-width;
+  height: $icon-width;
 }
 
 .game__scoreboard {
