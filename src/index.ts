@@ -127,3 +127,5 @@ function onCustomLevelFormSubmit(event: any) {
   })
   goToGame()
 }
+
+console.log('Made by Živojin Nedeljković for dresscode halloween hackathon 🎃')

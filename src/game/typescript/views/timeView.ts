@@ -11,6 +11,11 @@ class TimeView extends CounterView {
       this.counter++
     }, 1000)
   }
+
+  stopTime() {
+    if (!this.interval) return
+    clearInterval(this.interval)
+  }
 }
 
 export default new TimeView(

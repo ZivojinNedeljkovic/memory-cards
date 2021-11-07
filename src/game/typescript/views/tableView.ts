@@ -17,6 +17,10 @@ class TableView extends ClickableView<(card: CardView) => void> {
       CardView.getNewCardElement(this.element, card)
     })
   }
+
+  clearTable() {
+    this.element.innerHTML = ''
+  }
 }
 
 export default new TableView(

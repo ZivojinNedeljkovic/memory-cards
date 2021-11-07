@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="icon" href="./src/icons/favicon.png" type="image/png"> -->
-    <title>Card Mastermind</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎃</text></svg>">
+    <title>Memory Cards</title>
     <link rel="stylesheet" href="./scss/game.scss" />
     <script type="module" src="./typescript/game.ts"></script>
 </head>
@@ -14,8 +15,11 @@
 <body>
     <main class="game">
         <a href="/">
-            <img src="./icons/go-back-icon.svg" alt="refresh" class="game__go-back-icon" />
+            <img src="./icons/go-back-icon.svg" alt="go back to main page" class="game__go-back-icon" />
         </a>
+
+        <img src="./icons/refresh-icon.svg" alt="start over" class="game__refresh-icon" />
+
         <div class="game__scoreboard">
             <h3>Moves Played:&nbsp;<span class="game__scoreboard__moves-payed">0</span></h3>
             <h4>Time:&nbsp;<span class="game__scoreboard__time">0</span>s</h4>

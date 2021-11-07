@@ -28,12 +28,20 @@ $table-gap: multiplyCardWidth(0.1);
   position: fixed;
   top: 1.2vh;
   left: 1vw;
-  width: 4vw;
-  height: 4vw;
+  width: 6vw;
+  height: 6vw;
+}
+
+.game__refresh-icon {
+  position: fixed;
+  top: 1.2vh;
+  right: 1vw;
+  width: 6vw;
+  height: 6vw;
 }
 
 .game__scoreboard {
-  padding-top: multiplyCardWidth(0.5);
+  padding-top: multiplyCardWidth(0.7);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;

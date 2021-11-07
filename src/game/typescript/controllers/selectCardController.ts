@@ -45,6 +45,7 @@ async function submit() {
   if (gameState.cardsLeftInTheGame !== 0) return
 
   gameState.gameOver = true
+  timeView.stopTime()
 
   await pause(1000)
   alert('You Win!')
