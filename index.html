@@ -23,25 +23,27 @@
         <div class="levels hide">
             <h2>Levels</h2>
             <ul class="levels_list">
-                <li><a href="">Easy</a></li>
-                <li><a href="">Medium</a></li>
-                <li><a href="">Hard</a></li>
+                <li><button class="levels__easy-btn">Easy</button></li>
+                <li><button class="levels__medium-btn">Medium</button></li>
+                <li><button class="levels__hard-btn">Hard</button></li>
                 <li><button class="levels__custom-btn">Custom</button></li>
             </ul>
         </div>
 
         <form class="custom-level hide">
             <label for="rows">rows:&nbsp;</label>
-            <input type="number" name="rows">
+            <input class="custom-level__rows-input" type="number" name="rows" min="1" value="1" step="1">
 
             <label for="columns">columns:&nbsp;</label>
-            <input type="number" name="columns">
+            <input class="custom-level__columns-input" type="number" name="columns" min="2" value="2" step="2">
 
             <label for="cards-in-the-game">cards in the game:&nbsp;</label>
-            <input type="number" name="cards-in-the-game">
+            <input class="custom-level__cards-in-the-game-input" type="number" name="cards-in-the-game" min="2" max="6"
+                value="2" step="1">
 
             <label for="cards-per-move">cards per move:&nbsp;</label>
-            <input type="number" name="cards-per-move">
+            <input class="custom-level__cards-per-move-input" type="number" name="cards-per-move" min="2" value="2"
+                step="1">
 
             <button type="submit">play</button>
         </form>

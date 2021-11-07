@@ -1,5 +1,5 @@
 import {
-  CARDS_PER_ATTEMPT,
+  CARDS_PER_MOVE,
   FLIP_CARD_ANIMATION_DURATION,
 } from '../models/gameConfig'
 import { elementsAreTheSame as allAreTheSame } from '../models/gameLogic'
@@ -62,5 +62,5 @@ export function selectCardController(card: CardView) {
 
   gameState.currentMoveCards.push(card)
 
-  if (gameState.currentMoveCards.length === CARDS_PER_ATTEMPT) submit()
+  if (gameState.currentMoveCards.length === CARDS_PER_MOVE) submit()
 }

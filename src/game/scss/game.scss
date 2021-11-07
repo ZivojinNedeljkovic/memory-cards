@@ -24,6 +24,14 @@ $table-gap: multiplyCardWidth(0.1);
   height: 100vh;
 }
 
+.game__go-back-icon {
+  position: fixed;
+  top: 1.2vh;
+  left: 1vw;
+  width: multiplyCardWidth(0.3);
+  height: multiplyCardWidth(0.3);
+}
+
 .game__scoreboard {
   padding-top: multiplyCardWidth(0.5);
   display: flex;
