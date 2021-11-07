@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #99d98c;
+}
+
+header h1 {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+main {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.play-btn {
+  font-size: 2.7rem;
+  margin-top: 8vh;
+  border-radius: 10%;
+  padding: 0 4.5%;
+  background-color: #6247aa;
+  color: #dec9e9;
+}
+
+.levels h2 {
+  font-size: 2rem;
+  color: rgb(31, 31, 30);
+}
+
+.levels_list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: space-between;
+  height: 16rem;
+  //font-family: 'Lato', sans-serif;
+}
+
+.levels_list li {
+  font-size: 2.5rem;
+  margin-top: 1rem;
+  border-radius: 10%;
+  padding: 0 4.5%;
+  background-color: #6247aa;
+  color: #dec9e9;
+  width: fit-content;
+}
+
+.levels_list li a {
+  text-decoration: none;
+
+  color: inherit;
+}
+
+.levels_list li button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.custom-level {
+  display: grid;
+  grid-template-columns: 15rem 3rem;
+  gap: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.custom-level button {
+  width: 4rem;
+  font-size: 1.4rem;
+}
+
+.hide {
+  display: none;
+}

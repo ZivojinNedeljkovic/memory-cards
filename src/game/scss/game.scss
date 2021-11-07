@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
 $card-width: min(calc(80vw / var(--rows)), calc(65vh / var(--columns)));
 
 @function multiplyCardWidth($factors...) {
@@ -16,16 +24,8 @@ $table-gap: multiplyCardWidth(0.1);
   height: 100vh;
 }
 
-.game__table {
-  padding-top: multiplyCardWidth(0.2);
-  display: grid;
-  grid-template-columns: repeat(var(--rows), $card-width);
-  gap: $table-gap $table-gap;
-  justify-content: center;
-}
-
 .game__scoreboard {
-  padding-top: multiplyCardWidth(0.2);
+  padding-top: multiplyCardWidth(0.5);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -47,6 +47,14 @@ $table-gap: multiplyCardWidth(0.1);
     font-size: multiplyCardWidth(0.2);
     margin: 0;
   }
+}
+
+.game__table {
+  padding-top: multiplyCardWidth(0.2);
+  display: grid;
+  grid-template-columns: repeat(var(--rows), $card-width);
+  gap: $table-gap $table-gap;
+  justify-content: center;
 }
 
 @import './cards.scss';

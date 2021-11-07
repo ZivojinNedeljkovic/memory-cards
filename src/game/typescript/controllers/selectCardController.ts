@@ -8,6 +8,7 @@ import { wait } from '../models/helpers'
 import { CardView } from '../views/cardView'
 import movesPlayedView from '../views/movesPlayedView'
 import tableView from '../views/tableView'
+import timeView from '../views/timeView'
 
 function getCurrentAttempt() {
   return gameState.currentMoveCards.map(cardView => cardView.cardName)
@@ -53,6 +54,9 @@ async function submit() {
 }
 
 export function selectCardController(card: CardView) {
+  if (gameState.movesPlayed === 0 && gameState.currentMoveCards.length === 0)
+    timeView.startCounting()
+
   card.flip(FLIP_CARD_ANIMATION_DURATION)
   card.clickable = false
 

@@ -6,19 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="icon" href="./src/icons/favicon.png" type="image/png"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <title>Card Mastermind</title>
-    <link rel="stylesheet" href="index.scss" />
-    <script type="module" src="index.ts"></script>
+    <link rel="stylesheet" href="./src/index.scss" />
+    <script type="module" src="./src/index.ts"></script>
 </head>
 
 <body>
-    <div class="game">
-        <div class="game__scoreboard">
-            <h3>Moves Played:&nbsp;<span class="game__scoreboard__moves-payed">0</span></h3>
-            <h4>Time:&nbsp;<span class="game__scoreboard__time">0</span>s</h4>
+    <header>
+        <h1>Memory Cards</h1>
+    </header>
+    <main>
+        <button class="play-btn">Play</button>
+        <div class="levels hide">
+            <h2>Levels</h2>
+            <ul class="levels_list">
+                <li><a href="">Easy</a></li>
+                <li><a href="">Medium</a></li>
+                <li><a href="">Hard</a></li>
+                <li><button class="levels__custom-btn">Custom</button></li>
+            </ul>
         </div>
-        <div class="game__table"></div>
-    </div>
+
+        <form class="custom-level hide">
+            <label for="rows">rows:&nbsp;</label>
+            <input type="number" name="rows">
+
+            <label for="columns">columns:&nbsp;</label>
+            <input type="number" name="columns">
+
+            <label for="cards-in-the-game">cards in the game:&nbsp;</label>
+            <input type="number" name="cards-in-the-game">
+
+            <label for="cards-per-move">cards per move:&nbsp;</label>
+            <input type="number" name="cards-per-move">
+
+            <button type="submit">play</button>
+        </form>
+    </main>
+    <a href="./src/game/game.html">game</a>
 </body>
 
 </html>
