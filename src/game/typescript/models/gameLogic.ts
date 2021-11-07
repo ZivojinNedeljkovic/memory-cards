@@ -24,8 +24,12 @@ function randomlyFillArray<T>(length: number, elements: readonly T[]) {
 }
 
 /** Duplicate elements are shallow copies */
-function duplicateArrayElements<T>(array: readonly T[]) {
-  return [...array, ...array]
+function duplicateArrayElements<T>(array: readonly T[], times: number) {
+  const duplicateArray: T[] = []
+  while (times-- > 0) {
+    duplicateArray.push(...array)
+  }
+  return duplicateArray
 }
 
 function stirArray<T>(array: T[]) {
@@ -42,10 +46,14 @@ function stirArray<T>(array: T[]) {
 
 export function generateCards(
   numOfCards: number,
-  cardNames: readonly string[]
+  cardNames: readonly string[],
+  cardsPerMove: number
 ) {
   return stirArray(
-    duplicateArrayElements(randomlyFillArray(numOfCards / 2, cardNames))
+    duplicateArrayElements(
+      randomlyFillArray(numOfCards / cardsPerMove, cardNames),
+      cardsPerMove
+    )
   )
 }
 

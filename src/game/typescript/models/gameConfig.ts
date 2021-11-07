@@ -1,4 +1,4 @@
-export const CARDS: readonly string[] = [
+export const ALL_CARDS: readonly string[] = [
   'ocean',
   'orange',
   'vanilla',
@@ -7,11 +7,10 @@ export const CARDS: readonly string[] = [
   'leaf',
 ]
 export const FLIP_CARD_ANIMATION_DURATION = 800
-export const CARDS_PER_MOVE = 2
 
 export const gameConfig = {
-  allCards: ['ocean', 'orange', 'vanilla', 'love', 'tulip', 'leaf'],
-  inGameCards: [],
-  flipCardAnimationDuration: 800,
+  inGameCards: ['ocean', 'orange', 'vanilla', 'love', 'tulip', 'leaf'],
   cardsPerMove: 2,
+  rows: 5,
+  columns: 8,
 }

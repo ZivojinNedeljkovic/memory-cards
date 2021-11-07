@@ -1,8 +1,7 @@
-import { CARDS, CARDS_PER_MOVE } from '../models/gameConfig'
+import { ALL_CARDS, gameConfig } from '../models/gameConfig'
 import { generateCards } from '../models/gameLogic'
-import { setStyleProperties } from '../views/shared/domHelpers'
+import { gameState } from '../models/gameState'
 import tableView from '../views/tableView'
-import { initStateController } from './initStateController'
 import { selectCardController } from './selectCardController'
 
 function getLocalStorageParams() {
@@ -14,16 +13,36 @@ function getLocalStorageParams() {
   }
 }
 
-export function loadGameController() {
+function setUpGameConfig() {
   const { rows, columns, cardsInTheGame, cardsPerMove } =
     getLocalStorageParams()
 
-  //CARDS_PER_MOVE = cardsPerMove
-  console.log(rows, columns, cardsInTheGame, cardsPerMove)
+  gameConfig.rows = rows
+  gameConfig.columns = columns
+  gameConfig.cardsPerMove = cardsPerMove
+  gameConfig.inGameCards = ALL_CARDS.filter((_, i) => i < cardsInTheGame)
+}
 
-  initStateController(rows * columns)
-  const cards = generateCards(rows * columns, CARDS) as string[]
-  tableView.addCards(rows, columns, cards)
+function setUpGameState() {
+  const numberOfCards = gameConfig.rows * gameConfig.columns
+  gameState.movesPlayed = 0
+  gameState.currentMoveCards = []
+  gameState.gameOver = false
+  gameState.cards = generateCards(
+    numberOfCards,
+    gameConfig.inGameCards,
+    gameConfig.cardsPerMove
+  ) as string[]
+  gameState.cardsLeftInTheGame = numberOfCards
+  console.log(gameState)
+  console.log(gameConfig)
+}
+
+export function loadGameController() {
+  setUpGameConfig()
+  setUpGameState()
+
+  tableView.addCards(gameConfig.rows, gameConfig.columns, gameState.cards)
 
   tableView.clickHandler = selectCardController
 }
